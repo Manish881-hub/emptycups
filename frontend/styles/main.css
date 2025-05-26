@@ -1,0 +1,272 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: #F8F9FA;
+    color: #1a1a1a;
+    line-height: 1.4;
+}
+
+.container {
+    max-width: 375px;
+    margin: 0 auto;
+    background-color: #F8F9FA;
+    min-height: 100vh;
+}
+
+/* Header */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 20px;
+    background-color: #F8F9FA;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.logo-icon {
+    width: 24px;
+    height: 24px;
+    background: linear-gradient(135deg, #FF6B35, #F7931E);
+    border-radius: 6px;
+    position: relative;
+}
+
+.logo-icon::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 12px;
+    height: 12px;
+    background: white;
+    border-radius: 2px;
+}
+
+.logo-text {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1a1a1a;
+}
+
+.menu-dots {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 2px;
+}
+
+.dot {
+    width: 3px;
+    height: 3px;
+    background-color: #666;
+    border-radius: 50%;
+}
+
+/* Navigation */
+.nav {
+    display: flex;
+    justify-content: space-around;
+    padding: 12px 20px;
+    background-color: #F8F9FA;
+    border-bottom: 1px solid #E5E7EB;
+}
+
+.nav-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    text-decoration: none;
+    color: #666;
+    font-size: 11px;
+    font-weight: 400;
+}
+
+.nav-item.active {
+    color: #FF6B35;
+}
+
+.nav-icon {
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Content */
+.content {
+    padding: 20px;
+}
+
+/* Studio Card */
+.studio-card {
+    background: white;
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 16px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    border: 1px solid #F0F0F0;
+}
+
+.studio-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 8px;
+}
+
+.studio-name {
+    font-size: 18px;
+    font-weight: 600;
+    color: #1a1a1a;
+    margin-bottom: 4px;
+}
+
+.rating {
+    display: flex;
+    gap: 2px;
+    margin-bottom: 12px;
+}
+
+.star {
+    width: 14px;
+    height: 14px;
+    color: #FFA500;
+}
+
+.star.filled::before {
+    content: '★';
+}
+
+.star.empty::before {
+    content: '☆';
+}
+
+.star.half::before {
+    content: '☆';
+    background: linear-gradient(90deg, #FFA500 50%, transparent 50%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.studio-description {
+    font-size: 13px;
+    color: #666;
+    line-height: 1.4;
+    margin-bottom: 16px;
+}
+
+.stats {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 16px;
+}
+
+.stat {
+    text-align: center;
+}
+
+.stat-number {
+    font-size: 20px;
+    font-weight: 700;
+    color: #1a1a1a;
+    display: block;
+}
+
+.stat-label {
+    font-size: 11px;
+    color: #666;
+    margin-top: 2px;
+}
+
+.contact {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.phone {
+    font-size: 13px;
+    color: #1a1a1a;
+    font-weight: 500;
+}
+
+.arrow-icon {
+    width: 16px;
+    height: 16px;
+    color: #FF6B35;
+}
+
+.action-buttons {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+}
+
+.action-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    border: 1px solid #E5E7EB;
+    background: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.action-btn.primary {
+    background: #FF6B35;
+    border-color: #FF6B35;
+}
+
+.action-btn.primary .icon {
+    color: white;
+}
+
+.action-btn.shortlisted {
+    background: #FF6B35;
+    border-color: #FF6B35;
+}
+
+.action-btn.shortlisted .icon {
+    color: white;
+}
+
+.icon {
+    width: 16px;
+    height: 16px;
+    color: #666;
+}
+
+.nav-item.shortlist-active {
+    color: #FF6B35;
+}
+
+.studio-card.hidden {
+    display: none;
+}
+
+/* Last item styling */
+.studio-card:last-child {
+    margin-bottom: 20px;
+}
+
+.studio-card:last-child .studio-name {
+    margin-bottom: 8px;
+}

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EmptyCup Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <div class="header">
+            <div class="logo">
+                <div class="logo-icon"></div>
+                <span class="logo-text">EmptyCup</span>
+            </div>
+            <div class="menu-dots">
+                <div class="dot"></div>
+                <div class="dot"></div>
+                <div class="dot"></div>
+            </div>
+        </div>
+
+        <!-- Navigation -->
+        <div class="nav">
+            <a href="#" class="nav-item active">
+                <div class="nav-icon">📄</div>
+                <span>List</span>
+            </a>
+            <a href="#" class="nav-item">
+                <div class="nav-icon">🖼️</div>
+                <span>Gallery</span>
+            </a>
+            <a href="#" class="nav-item">
+                <div class="nav-icon">📍</div>
+                <span>Map</span>
+            </a>
+            <a href="#" class="nav-item" id="shortlist-filter">
+                <div class="nav-icon">💾</div>
+                <span>Shortlisted</span>
+            </a>
+            <a href="#" class="nav-item">
+                <div class="nav-icon">↕️</div>
+                <span>Sort</span>
+            </a>
+        </div>
+
+        <!-- Content -->
+        <div class="content">
+            <!-- Epic Designs Card -->
+            <div class="studio-card" data-studio="epic-designs">
+                <div class="studio-header">
+                    <div>
+                        <h2 class="studio-name">Epic Designs</h2>
+                        <div class="rating">
+                            <span class="star filled">★</span>
+                            <span class="star filled">★</span>
+                            <span class="star filled">★</span>
+                            <span class="star filled">★</span>
+                            <span class="star empty">☆</span>
+                        </div>
+                    </div>
+                    <div class="arrow-icon">→</div>
+                </div>
+
+                <p class="studio-description">
+                    Passionate team of UI & UX designers working out of Bangalore with an experience of 4 years.
+                </p>
+
+                <div class="stats">
+                    <div class="stat">
+                        <span class="stat-number">57</span>
+                        <span class="stat-label">Projects</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">8</span>
+                        <span class="stat-label">Years</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">$</span>
+                        <span class="stat-label">Price</span>
+                    </div>
+                </div>
+
+                <div class="contact">
+                    <div class="phone">+91 - 984532853</div>
+                    <div class="phone">+91 - 984532854</div>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="action-btn">
+                        <span class="icon">ℹ️</span>
+                    </button>
+                    <button class="action-btn">
+                        <span class="icon">👁️</span>
+                    </button>
+                    <button class="action-btn shortlist-btn" data-studio="epic-designs">
+                        <span class="icon">🤍</span>
+                    </button>
+                    <button class="action-btn">
+                        <span class="icon">📋</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Studio - D3 Card -->
+            <div class="studio-card" data-studio="studio-d3">
+                <div class="studio-header">
+                    <div>
+                        <h2 class="studio-name">Studio - D3</h2>
+                        <div class="rating">
+                            <span class="star filled">★</span>
+                            <span class="star filled">★</span>
+                            <span class="star filled">★</span>
+                            <span class="star filled">★</span>
+                            <span class="star half">☆</span>
+                        </div>
+                    </div>
+                    <div class="arrow-icon">→</div>
+                </div>
+
+                <p class="studio-description">
+                    Passionate team of UI & UX designers working out of Bangalore with an experience of 4 years.
+                </p>
+
+                <div class="stats">
+                    <div class="stat">
+                        <span class="stat-number">43</span>
+                        <span class="stat-label">Projects</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">6</span>
+                        <span class="stat-label">Years</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">$$</span>
+                        <span class="stat-label">Price</span>
+                    </div>
+                </div>
+
+                <div class="contact">
+                    <div class="phone">+91 - 984532853</div>
+                    <div class="phone">+91 - 984532854</div>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="action-btn">
+                        <span class="icon">ℹ️</span>
+                    </button>
+                    <button class="action-btn">
+                        <span class="icon">👁️</span>
+                    </button>
+                    <button class="action-btn shortlist-btn" data-studio="studio-d3">
+                        <span class="icon">🤍</span>
+                    </button>
+                    <button class="action-btn">
+                        <span class="icon">📋</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- House of designs Card -->
+            <div class="studio-card" data-studio="house-of-designs">
+                <div class="studio-header">
+                    <div>
+                        <h2 class="studio-name">House of designs</h2>
+                    </div>
+                    <div class="arrow-icon">→</div>
+                </div>
+
+                <div class="action-buttons">
+                    <button class="action-btn">
+                        <span class="icon">ℹ️</span>
+                    </button>
+                    <button class="action-btn">
+                        <span class="icon">👁️</span>
+                    </button>
+                    <button class="action-btn shortlist-btn" data-studio="house-of-designs">
+                        <span class="icon">🤍</span>
+                    </button>
+                    <button class="action-btn">
+                        <span class="icon">📋</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="scripts/app.js"></script>
+</body>
+</html>
