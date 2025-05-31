@@ -1,11 +1,12 @@
 // State management for shortlisted items
 let shortlistedStudios = new Set();
 let isShortlistFilterActive = false;
+const API_BASE_URL = 'http://localhost:5000/api';
 
 // Initialize the application
-function init() {
+async function init() {
     setupEventListeners();
-    loadShortlistedFromStorage();
+    await loadShortlistedFromAPI();
 }
 
 // Set up all event listeners
@@ -21,12 +22,20 @@ function setupEventListeners() {
     shortlistFilter.addEventListener('click', handleShortlistFilter);
 }
 
-// Load shortlisted items from localStorage
-function loadShortlistedFromStorage() {
-    const savedShortlist = localStorage.getItem('shortlistedStudios');
-    if (savedShortlist) {
-        shortlistedStudios = new Set(JSON.parse(savedShortlist));
-        updateShortlistButtons();
+// Load shortlisted items from API
+async function loadShortlistedFromAPI() {
+    try {
+        const response = await fetch(`${API_BASE_URL}/shortlist`);
+        const data = await response.json();
+
+        if (data.success) {
+            shortlistedStudios = new Set(data.data.map(listing => listing.id));
+            updateShortlistButtons();
+        } else {
+            console.error('Failed to load shortlisted items:', data.error);
+        }
+    } catch (error) {
+        console.error('Error loading shortlisted items:', error);
     }
 }
 
@@ -48,30 +57,45 @@ function updateShortlistButtons() {
 }
 
 // Handle shortlist button toggle
-function handleShortlistToggle(event) {
+async function handleShortlistToggle(event) {
     event.preventDefault();
     const button = event.currentTarget;
     const studioId = button.getAttribute('data-studio');
     const icon = button.querySelector('.icon');
 
-    if (shortlistedStudios.has(studioId)) {
-        // Remove from shortlist
-        shortlistedStudios.delete(studioId);
-        button.classList.remove('shortlisted');
-        icon.textContent = '🤍';
-    } else {
-        // Add to shortlist
-        shortlistedStudios.add(studioId);
-        button.classList.add('shortlisted');
-        icon.textContent = '❤️';
-    }
+    try {
+        if (shortlistedStudios.has(studioId)) {
+            // Remove from shortlist
+            const response = await fetch(`${API_BASE_URL}/shortlist/${studioId}`, {
+                method: 'DELETE'
+            });
+            const data = await response.json();
 
-    // Save to localStorage
-    localStorage.setItem('shortlistedStudios', JSON.stringify(Array.from(shortlistedStudios)));
+            if (data.success) {
+                shortlistedStudios.delete(studioId);
+                button.classList.remove('shortlisted');
+                icon.textContent = '🤍';
+            }
+        } else {
+            // Add to shortlist
+            const response = await fetch(`${API_BASE_URL}/shortlist/${studioId}`, {
+                method: 'POST'
+            });
+            const data = await response.json();
 
-    // Update display if shortlist filter is active
-    if (isShortlistFilterActive) {
-        updateStudioDisplay();
+            if (data.success) {
+                shortlistedStudios.add(studioId);
+                button.classList.add('shortlisted');
+                icon.textContent = '❤️';
+            }
+        }
+
+        // Update display if shortlist filter is active
+        if (isShortlistFilterActive) {
+            updateStudioDisplay();
+        }
+    } catch (error) {
+        console.error('Error toggling shortlist:', error);
     }
 }
 

@@ -1,0 +1,73 @@
+{
+  "listings": [
+    {
+      "id": "epic-designs",
+      "name": "Epic Designs",
+      "rating": 4.0,
+      "description": "Passionate team of UI & UX designers working out of Bangalore with an experience of 4 years.",
+      "projects": 57,
+      "years": 8,
+      "price": "$$",
+      "phones": [
+        "+91 - 984532853",
+        "+91 - 984532854"
+      ],
+      "created_at": "2024-01-15T10:30:00Z"
+    },
+    {
+      "id": "studio-d3",
+      "name": "Studio - D3",
+      "rating": 4.5,
+      "description": "Passionate team of UI & UX designers working out of Bangalore with an experience of 4 years.",
+      "projects": 43,
+      "years": 6,
+      "price": "$$$",
+      "phones": [
+        "+91 - 984532853",
+        "+91 - 984532854"
+      ],
+      "created_at": "2024-01-10T14:20:00Z"
+    },
+    {
+      "id": "house-of-designs",
+      "name": "House of designs",
+      "rating": 4.2,
+      "description": "Creative interior design studio specializing in modern and contemporary spaces.",
+      "projects": 28,
+      "years": 3,
+      "price": "$",
+      "phones": [
+        "+91 - 984532855"
+      ],
+      "created_at": "2024-01-05T09:15:00Z"
+    },
+    {
+      "id": "design-hub",
+      "name": "Design Hub",
+      "rating": 4.8,
+      "description": "Award-winning design studio with expertise in residential and commercial projects.",
+      "projects": 72,
+      "years": 10,
+      "price": "$$$$",
+      "phones": [
+        "+91 - 984532856",
+        "+91 - 984532857"
+      ],
+      "created_at": "2024-01-01T16:45:00Z"
+    },
+    {
+      "id": "creative-spaces",
+      "name": "Creative Spaces",
+      "rating": 3.9,
+      "description": "Innovative interior solutions focusing on sustainable and eco-friendly designs.",
+      "projects": 35,
+      "years": 5,
+      "price": "$$",
+      "phones": [
+        "+91 - 984532858"
+      ],
+      "created_at": "2023-12-28T11:30:00Z"
+    }
+  ],
+  "shortlisted": []
+}
