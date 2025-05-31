@@ -17,7 +17,11 @@ def load_listings():
     """Load listings from JSON file"""
     try:
         with open(DATA_FILE, 'r') as f:
-            return json.load(f)
+            data = json.load(f)
+            # Ensure shortlisted array exists
+            if 'shortlisted' not in data:
+                data['shortlisted'] = []
+            return data
     except FileNotFoundError:
         return {"listings": [], "shortlisted": []}
     except json.JSONDecodeError:
@@ -90,10 +94,13 @@ def get_shortlisted():
     try:
         data = load_listings()
         shortlisted_ids = data.get('shortlisted', [])
+        print(f"Getting shortlisted items. IDs: {shortlisted_ids}")
+
         shortlisted_listings = [
             listing for listing in data['listings']
             if listing['id'] in shortlisted_ids
         ]
+        print(f"Found {len(shortlisted_listings)} shortlisted listings")
 
         return jsonify({
             "success": True,
@@ -101,6 +108,7 @@ def get_shortlisted():
             "count": len(shortlisted_listings)
         })
     except Exception as e:
+        print(f"Error getting shortlisted items: {e}")
         return jsonify({
             "success": False,
             "error": str(e)
@@ -111,10 +119,12 @@ def add_to_shortlist(listing_id):
     """Add a listing to shortlist"""
     try:
         data = load_listings()
+        print(f"Adding {listing_id} to shortlist")
 
         # Check if listing exists
         listing = next((l for l in data['listings'] if l['id'] == listing_id), None)
         if not listing:
+            print(f"Listing {listing_id} not found")
             return jsonify({
                 "success": False,
                 "error": "Listing not found"
@@ -127,6 +137,7 @@ def add_to_shortlist(listing_id):
         # Add to shortlist if not already there
         if listing_id not in data['shortlisted']:
             data['shortlisted'].append(listing_id)
+            print(f"Added {listing_id} to shortlist. Current shortlist: {data['shortlisted']}")
 
             if save_listings(data):
                 return jsonify({
@@ -135,11 +146,13 @@ def add_to_shortlist(listing_id):
                     "listing_id": listing_id
                 })
             else:
+                print("Failed to save data")
                 return jsonify({
                     "success": False,
                     "error": "Failed to save data"
                 }), 500
         else:
+            print(f"{listing_id} already in shortlist")
             return jsonify({
                 "success": True,
                 "message": "Already in shortlist",
@@ -147,6 +160,7 @@ def add_to_shortlist(listing_id):
             })
 
     except Exception as e:
+        print(f"Error adding to shortlist: {e}")
         return jsonify({
             "success": False,
             "error": str(e)

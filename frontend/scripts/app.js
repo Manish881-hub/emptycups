@@ -25,11 +25,14 @@ function setupEventListeners() {
 // Load shortlisted items from API
 async function loadShortlistedFromAPI() {
     try {
+        console.log('Loading shortlisted items from API...');
         const response = await fetch(`${API_BASE_URL}/shortlist`);
         const data = await response.json();
+        console.log('API Response:', data);
 
         if (data.success) {
             shortlistedStudios = new Set(data.data.map(listing => listing.id));
+            console.log('Shortlisted studios:', Array.from(shortlistedStudios));
             updateShortlistButtons();
         } else {
             console.error('Failed to load shortlisted items:', data.error);
@@ -100,15 +103,19 @@ async function handleShortlistToggle(event) {
 }
 
 // Handle shortlist filter toggle
-function handleShortlistFilter(event) {
+async function handleShortlistFilter(event) {
     event.preventDefault();
+    console.log('Shortlist filter clicked');
     const filterButton = event.currentTarget;
 
     isShortlistFilterActive = !isShortlistFilterActive;
+    console.log('Shortlist filter active:', isShortlistFilterActive);
 
     if (isShortlistFilterActive) {
         filterButton.classList.add('shortlist-active');
         filterButton.style.color = '#FF6B35';
+        // Reload shortlisted items when filter is activated
+        await loadShortlistedFromAPI();
     } else {
         filterButton.classList.remove('shortlist-active');
         filterButton.style.color = '#666';
@@ -119,10 +126,16 @@ function handleShortlistFilter(event) {
 
 // Update which studios are displayed
 function updateStudioDisplay() {
+    console.log('Updating studio display');
+    console.log('Shortlist filter active:', isShortlistFilterActive);
+    console.log('Shortlisted studios:', Array.from(shortlistedStudios));
+
     const studioCards = document.querySelectorAll('.studio-card');
+    const shortlistFilter = document.getElementById('shortlist-filter');
 
     studioCards.forEach(card => {
         const studioId = card.getAttribute('data-studio');
+        console.log('Checking studio:', studioId, 'Is shortlisted:', shortlistedStudios.has(studioId));
 
         if (isShortlistFilterActive) {
             // Show only shortlisted studios
@@ -136,7 +149,16 @@ function updateStudioDisplay() {
             card.classList.remove('hidden');
         }
     });
+
+    // Update shortlist filter button state
+    if (isShortlistFilterActive) {
+        shortlistFilter.classList.add('shortlist-active');
+        shortlistFilter.style.color = '#FF6B35';
+    } else {
+        shortlistFilter.classList.remove('shortlist-active');
+        shortlistFilter.style.color = '#666';
+    }
 }
 
-// Initialize when DOM is loaded
+// Initialize the application when the DOM is loaded
 document.addEventListener('DOMContentLoaded', init);
